@@ -12,9 +12,9 @@ import (
 	"server-resource-probe/service"
 )
 
-func SetupRouter() {
+func SetupRouter(port string) {
 	r := gin.Default()
 	r.Use(middleware.Cors()) //配置跨域
 	r.GET("/gethostinfo", service.GetHostInfo)
-	r.Run(":8082")
+	r.Run(":" + port)
 }

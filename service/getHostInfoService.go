@@ -17,7 +17,12 @@ import (
 	"time"
 )
 
-func GetHostInfo(c *gin.Context) {
+//
+// HostInfo
+//  @Description: 获取服务器硬件资源信息函数
+//  @param c:
+//
+func HostInfo() model.HostInfo {
 	var hostInfo model.HostInfo
 	//获取CPU数据
 	hostInfo.CpuPhysicalCount, _ = cpu.Counts(false)
@@ -43,5 +48,16 @@ func GetHostInfo(c *gin.Context) {
 	//获取网络数据
 	net_info, _ := net.IOCounters(false)
 	hostInfo.NetIO = net_info
+	return hostInfo
+
+}
+
+//
+// GetHostInfo
+//  @Description: 响应HTTP以Get方式获取服务器硬件资源信息请求
+//  @param c:
+//
+func GetHostInfo(c *gin.Context) {
+	hostInfo := HostInfo()
 	c.JSON(http.StatusOK, hostInfo)
 }

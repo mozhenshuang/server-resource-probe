@@ -6,8 +6,12 @@
 
 package main
 
-import "server-resource-probe/router"
+import (
+	"server-resource-probe/router"
+	"server-resource-probe/service"
+)
 
 func main() {
-	router.SetupRouter()
+	go router.SetupRouter("8082")
+	service.StartWS("8888")
 }
