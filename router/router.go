@@ -15,6 +15,10 @@ import (
 func SetupRouter(port string) {
 	r := gin.Default()
 	r.Use(middleware.Cors()) //配置跨域
-	r.GET("/gethostinfo", service.GetHostInfo)
+	r.GET("/cpu", service.GetCPUInfo)
+	r.GET("/mem", service.GetMemInfo)
+	r.GET("/disk", service.GetDiskInfo)
+	r.GET("/net", service.GetNetInfo)
+	r.GET("/host", service.GetHostInfo)
 	r.Run(":" + port)
 }
