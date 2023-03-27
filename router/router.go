@@ -20,5 +20,5 @@ func SetupRouter(port string) {
 	r.GET("/disk", service.GetDiskInfo)
 	r.GET("/net", service.GetNetInfo)
 	r.GET("/host", service.GetHostInfo)
-	r.Run(":" + port)
+	r.Run("0.0.0.0:" + port)
 }

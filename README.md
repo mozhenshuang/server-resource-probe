@@ -12,6 +12,13 @@ git clone http://10.0.2.203/MoZhenShuang/server-resource-probe.git
 cd server-resource-probe
 go mod tidy && go build
 ```
+> **注意**：如果是在Windows上编译成Linux的可执行文件，初始化项目之后请输入以下编译设置命令：
+```bash
+set CGO_ENABLED=0
+set GOOS=linux
+set GOARCH=amd64
+go build
+```
 
 ### 启动默认配置
 #### Windows默认启动
@@ -27,7 +34,7 @@ chmod +777 server-resource-probe
 //运行程序
 ./server-resource-probe
 ```
-> 注意：程序默认启动将会监听两个端口，webapi：8082；websocket：8083
+> **注意**：程序默认启动将会监听两个端口，webapi：8082；websocket：8083
  
 ### 自定义启动
 程序支持使用`-m`参数指定启动相应的服务，程序支持的启动模式如下：
@@ -57,5 +64,5 @@ webapi服务提供如下路由：
 ### WebSocket服务接口
 websocket服务启动之后，其地址为：`ws://IP:port/`
 客户端通过websocket接口成功连接服务端之后，程序会每秒返回主机资源信息。
-## 注意事项
+## 特别说明
 - 由于gopsutil框架的实现方式，当获取CPU的使用情况时，需要等两秒钟才能够统计出CPU的使用情况，因此当通过webapi服务获取所有主机硬件资源使用情况时，需要等2秒才会有响应信息，若单独请求某一项硬件资源使用情况时，通常响应时间会在几毫秒。

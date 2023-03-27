@@ -72,7 +72,7 @@ func StartWS(port string) {
 	log.Print("ws linsten on ", port)
 	http.HandleFunc("/", wsHandler) // ws://127.0.0.1:8888/
 	// 监听 地址 端口
-	err := http.ListenAndServe(":"+port, nil)
+	err := http.ListenAndServe("0.0.0.0:"+port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe", err.Error())
 	}
