@@ -33,9 +33,8 @@ Options:
 func GetStartParam() model.ParamModel {
 	version = "0.0.1"
 	flag.BoolVar(&h, "h", false, "show help")
-
-	flag.BoolVar(&v, "v", false, "show version and configure options then exit")
-	flag.BoolVar(&V, "V", false, "show version and configure options then exit")
+	flag.BoolVar(&v, "v", false, "show version and exit")
+	flag.BoolVar(&V, "V", false, "show version and exit")
 	flag.StringVar(&m, "m", "all", "StartMode:\n \twa: Start WebApiServer\n \tws: Start WebSocketServer\n \tall: Start WebApiServer and WebSocketServer)")
 	flag.IntVar(&ap, "ap", 8082, "WebApiServer start port")
 	flag.IntVar(&sp, "sp", 8083, "WebSocketServer start port")
