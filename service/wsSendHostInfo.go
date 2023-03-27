@@ -54,6 +54,7 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 			if err := conn.WriteMessage(1, hostByteArr); err != nil {
 
 				log.Println("Writeing error...", err)
+				c.Stop()
 				return
 			}
 			log.Printf("Write msg to client: recved: %s \n", hostByteArr)
